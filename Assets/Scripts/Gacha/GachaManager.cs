@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using GachaGame.Core;
 using GachaGame.Data;
+using GachaGame.Inventory;
 using GachaGame.Managers;
 using GachaGame.Utils;
 using UnityEngine;
@@ -21,6 +22,7 @@ namespace GachaGame.Gacha
         private GachaSystem gachaSystem;
         private CurrencyManager currencyManager;
         private InventoryManager inventoryManager;
+        private ShardManager shardManager;
 
         public PitySystem Pity { get; private set; }
         public GachaHistory History { get; private set; }
@@ -36,6 +38,7 @@ namespace GachaGame.Gacha
         {
             ServiceLocator.Instance.TryGet(out currencyManager);
             ServiceLocator.Instance.TryGet(out inventoryManager);
+            ServiceLocator.Instance.TryGet(out shardManager); // optional: ascension shards on duplicate pulls
 
             Debug.Log($"{nameof(GachaManager)} initialized.");
             return Task.CompletedTask;
@@ -62,6 +65,7 @@ namespace GachaGame.Gacha
 
             result = gachaSystem.PerformPull(Pity.State, bannerController.CharacterPool, banner.featuredCharacterId, GetOwnedCharacterIds());
             inventoryManager.ApplyPullResult(result);
+            shardManager?.HandlePullResult(result);
             History.Record(result);
             return true;
         }
@@ -79,6 +83,7 @@ namespace GachaGame.Gacha
             foreach (var result in results)
             {
                 inventoryManager.ApplyPullResult(result);
+                shardManager?.HandlePullResult(result);
                 History.Record(result);
             }
             return true;

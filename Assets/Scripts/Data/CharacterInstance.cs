@@ -14,6 +14,7 @@ namespace GachaGame.Data
         public int currentLevel;
         public int currentExp;
         public int memoryLevel; // duplicate count, 0-6
+        public int ascensionLevel; // star tier reached via CharacterAscensionSystem, 0 = base
         public SerializableDictionary<string, GearData> equippedGear = new();
 
         [NonSerialized] private Dictionary<StatType, float> combatStats = new();

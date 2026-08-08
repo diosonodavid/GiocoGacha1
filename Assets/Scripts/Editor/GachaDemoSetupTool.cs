@@ -65,7 +65,7 @@ namespace GachaGame.Editor
 
             RecreateEvocazioneButton(gachaPanel.transform, gachaUI);
 
-            var mainMenuUI = Object.FindFirstObjectByType<MainMenuUI>();
+            var mainMenuUI = Object.FindAnyObjectByType<MainMenuUI>();
             if (mainMenuUI != null)
                 AssignField(mainMenuUI, "gachaPanel", gachaPanel);
 
@@ -156,7 +156,7 @@ namespace GachaGame.Editor
 
         private static void RegisterWithBootstrapper(GachaManager gachaManager)
         {
-            var bootstrapper = Object.FindFirstObjectByType<AppBootstrapper>();
+            var bootstrapper = Object.FindAnyObjectByType<AppBootstrapper>();
             if (bootstrapper == null)
             {
                 Debug.LogWarning("No AppBootstrapper found in the scene - GachaManager was not registered with ServiceLocator, so GachaUI won't resolve it at runtime. Add GachaManager to AppBootstrapper's Service Behaviours list manually.");
@@ -180,7 +180,7 @@ namespace GachaGame.Editor
 
         private static void GrantDemoGems()
         {
-            var currencyManager = Object.FindFirstObjectByType<CurrencyManager>();
+            var currencyManager = Object.FindAnyObjectByType<CurrencyManager>();
             if (currencyManager == null)
             {
                 Debug.LogWarning("No CurrencyManager found in the scene - pulls will fail with 0 gems until one exists and is registered with AppBootstrapper.");

@@ -16,5 +16,7 @@ namespace GachaGame.Utils
 
         public const int DailyResetIntervalSeconds = 86400;
         public const int WeeklyResetIntervalSeconds = 604800;
+
+        public const int MaxStarsPerStage = 3;
     }
 }

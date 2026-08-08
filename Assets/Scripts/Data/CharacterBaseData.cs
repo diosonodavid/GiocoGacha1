@@ -11,5 +11,6 @@ namespace GachaGame.Data
         public Rarity rarity;
         public ElementType element;
         public SerializableDictionary<StatType, float> baseStats = new();
+        public LeaderSkillData leaderSkill;
     }
 }

@@ -61,4 +61,15 @@ namespace GachaGame.Data
         Daily,
         Weekly
     }
+
+    // Categories AchievementManager can auto-route ReportStat() calls to; each AchievementData
+    // declares which one it tracks so game systems don't need to know achievement ids directly.
+    public enum AchievementStatType
+    {
+        DamageDealt,
+        EnemiesDefeated,
+        StagesCleared,
+        AccountLevelReached,
+        GachaPullsPerformed
+    }
 }

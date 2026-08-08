@@ -20,6 +20,9 @@ namespace GachaGame.Data
         public string equippedSkinId;
         public int talentPoints;
         public List<string> unlockedTalentNodeIds = new();
+        public int affinityPoints;
+        public int affinityLevel;
+        public List<string> unlockedStoryIds = new();
 
         [NonSerialized] private Dictionary<StatType, float> combatStats = new();
         [NonSerialized] private readonly List<StatModifier> activeStatusEffects = new();

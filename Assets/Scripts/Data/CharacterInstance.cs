@@ -17,6 +17,9 @@ namespace GachaGame.Data
         public int ascensionLevel; // star tier reached via CharacterAscensionSystem, 0 = base
         public SerializableDictionary<string, GearData> equippedGear = new();
         public SerializableDictionary<string, RuneData> equippedRunes = new();
+        public string equippedSkinId;
+        public int talentPoints;
+        public List<string> unlockedTalentNodeIds = new();
 
         [NonSerialized] private Dictionary<StatType, float> combatStats = new();
         [NonSerialized] private readonly List<StatModifier> activeStatusEffects = new();

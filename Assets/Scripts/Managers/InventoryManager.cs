@@ -15,10 +15,12 @@ namespace GachaGame.Managers
         private readonly Dictionary<string, int> fragments = new();
         private readonly List<GearData> ownedGear = new();
         private readonly List<RuneData> ownedRunes = new();
+        private readonly List<GemData> ownedGems = new();
 
         public IReadOnlyDictionary<string, CharacterInstance> OwnedCharacters => ownedCharacters;
         public IReadOnlyList<GearData> OwnedGear => ownedGear;
         public IReadOnlyList<RuneData> OwnedRunes => ownedRunes;
+        public IReadOnlyList<GemData> OwnedGems => ownedGems;
 
         public Task InitializeAsync()
         {
@@ -95,5 +97,12 @@ namespace GachaGame.Managers
         }
 
         public void RemoveRune(RuneData rune) => ownedRunes.Remove(rune);
+
+        public void AddGem(GemData gem)
+        {
+            if (gem != null) ownedGems.Add(gem);
+        }
+
+        public void RemoveGem(GemData gem) => ownedGems.Remove(gem);
     }
 }

@@ -14,9 +14,11 @@ namespace GachaGame.Managers
         private readonly Dictionary<string, int> materials = new();
         private readonly Dictionary<string, int> fragments = new();
         private readonly List<GearData> ownedGear = new();
+        private readonly List<RuneData> ownedRunes = new();
 
         public IReadOnlyDictionary<string, CharacterInstance> OwnedCharacters => ownedCharacters;
         public IReadOnlyList<GearData> OwnedGear => ownedGear;
+        public IReadOnlyList<RuneData> OwnedRunes => ownedRunes;
 
         public Task InitializeAsync()
         {
@@ -86,5 +88,12 @@ namespace GachaGame.Managers
         }
 
         public void RemoveGear(GearData gear) => ownedGear.Remove(gear);
+
+        public void AddRune(RuneData rune)
+        {
+            if (rune != null) ownedRunes.Add(rune);
+        }
+
+        public void RemoveRune(RuneData rune) => ownedRunes.Remove(rune);
     }
 }

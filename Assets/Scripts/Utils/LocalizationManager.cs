@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GachaGame.Core;
+using GachaGame.Data;
 using GachaGame.Managers;
 using UnityEngine;
 
@@ -11,13 +12,6 @@ namespace GachaGame.Utils
     // and raises OnLanguageChanged so any live UI can re-pull its strings without a scene reload.
     public class LocalizationManager : MonoBehaviour, IService
     {
-        [Serializable]
-        private class LocalizationTable
-        {
-            public List<string> keys = new();
-            public List<string> values = new();
-        }
-
         public event Action<string> OnLanguageChanged;
 
         [SerializeField] private string currentLanguageCode = "en";
@@ -42,7 +36,7 @@ namespace GachaGame.Utils
             if (string.IsNullOrEmpty(languageCode)) return;
 
             var table = resourceManager != null
-                ? await resourceManager.LoadJsonAsync<LocalizationTable>($"Localization/{languageCode}")
+                ? await resourceManager.LoadJsonAsync<LocalizationData>($"Localization/{languageCode}")
                 : null;
 
             if (table == null && languageCode != fallbackLanguageCode)

@@ -2,7 +2,8 @@
     "name": "GachaGame.Runtime",
     "rootNamespace": "GachaGame",
     "references": [
-        "UnityEngine.UI"
+        "UnityEngine.UI",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
